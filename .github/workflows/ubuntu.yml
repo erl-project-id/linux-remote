@@ -1,0 +1,14 @@
+name: ubuntu
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: START SSH
+        continue-on-error: true
+        run: wget https://raw.githubusercontent.com/erl-project-id/linux-remote/main/remote.sh && chmod +x remote.sh && ./remote.sh
+      - name: KEEP ALIVE FOR 6h
+        continue-on-error: true
+        run: sleep 6h
